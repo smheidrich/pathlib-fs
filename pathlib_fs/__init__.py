@@ -5,4 +5,6 @@ except DistributionNotFound:
   # package is not installed
   pass
 
-__all__ = []
+from .core import FsPath
+
+__all__ = [ "FsPath" ]

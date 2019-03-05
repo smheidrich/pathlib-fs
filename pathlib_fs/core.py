@@ -2,11 +2,12 @@ import pathlib
 
 
 class FsPath(pathlib.PosixPath):
-  def __new__(cls, fs, *pathsegments):
+  def __new__(cls, fs, *pathsegments, disallow_str=False):
     self = super().__new__(cls, *pathsegments)
     if self.is_absolute():
       raise ValueError("absolute paths don't make sense here...")
     self.fs = fs
+    self.disallow_str = disallow_str
     return self
 
   def open(self, *args, **kwargs):
@@ -29,6 +30,13 @@ class FsPath(pathlib.PosixPath):
 
   def as_str(self):
     return str(self.as_pathlib_path())
+
+  def __str__(self):
+    if not self.disallow_str:
+      return self.as_str()
+    else:
+      raise ValueError("str() not allowed for this {} instance".format(
+        self.__class__))
 
   def __repr__(self):
     return "{}({}, {})".format(self.__class__.__name__, self.fs,
