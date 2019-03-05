@@ -28,6 +28,8 @@ Just started, hence totally WIP.
 
 There is a lot to do...
 
+Generated from ``dir(pathlib.Path)``:
+
 - ``__bytes__``: ?
 - ``__class__``: ?
 - ``__delattr__``: ?
@@ -48,10 +50,10 @@ There is a lot to do...
 - ``__lt__``: ?
 - ``__module__``: ?
 - ``__ne__``: ?
-- ``__new__``: ?
+- **``__new__``**: done
 - ``__reduce__``: ?
 - ``__reduce_ex__``: ?
-- ``__repr__``: ?
+- **``__repr__``**: done
 - ~~``__rtruediv__``~~ probably doesn't make sense?
 - ``__setattr__``: ?
 - ``__sizeof__``: ?
