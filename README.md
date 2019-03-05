@@ -18,7 +18,7 @@ support for the various filesystems supported by PyFilesystem, so long as they
 consequently deal with paths only via ``pathlib.Path`` methods (and don't
 convert the path to a string before opening, etc.).
 
-That's what this project aims to provide.
+That's what this project aims to implement.
 
 ## Implementation status
 
