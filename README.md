@@ -12,7 +12,7 @@ in-memory filesystem, filesystems on remote machines, ...
 Meanwhile, a lot of libraries already use ``pathlib.Path`` for dealing with
 operations on the local filesystem.
 
-Now if there was a wrapper around PyFilesystem paths exposing a
+Now if only there was a wrapper around PyFilesystem paths exposing a
 ``pathlib.Path`` interface, all of these libraries would automatically gain
 support for the various filesystems supported by PyFilesystem, so long as they
 consequently deal with paths only via ``pathlib.Path`` methods (and don't
