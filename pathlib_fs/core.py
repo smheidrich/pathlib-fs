@@ -41,3 +41,7 @@ class FsPath(pathlib.PosixPath):
   def __repr__(self):
     return "{}({}, {})".format(self.__class__.__name__, self.fs,
       repr(super().__str__()))
+
+  def __truediv__(self, x):
+    segments = list(self.parts) + [x]
+    return self.__class__(self.fs, *segments, disallow_str=self.disallow_str)
