@@ -11,7 +11,7 @@ class FsPath(pathlib.PosixPath):
     return self
 
   def open(self, *args, **kwargs):
-    return self.fs.open(self.as_str(), *args, **kwargs)
+    return self.fs.open(self.relative_fs_path, *args, **kwargs)
 
   @property
   def relative_fs_path(self) -> str:

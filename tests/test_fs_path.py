@@ -2,6 +2,7 @@ from pathlib_fs import FsPath
 
 import fs.osfs
 from pathlib import Path
+from tempfile import TemporaryDirectory
 
 import pytest
 
@@ -37,3 +38,18 @@ def test_basic_pathlib_emulation():
   p2 = p / "etc"
   assert p2.as_str() == "/tmp/hello/world/etc"
   assert p2.relative_fs_path == "hello/world/etc"
+
+def test_open():
+  with TemporaryDirectory() as tmpdir:
+    tmpdir_path = Path(tmpdir)
+    with (tmpdir_path/"some_file").open("w") as f:
+      f.write("hello")
+    root = fs.osfs.OSFS(tmpdir)
+    p = FsPath(root, "some_file")
+    with p.open() as f:
+      assert f.read() == "hello"
+    # also test another way of addressing the file just to be sure:
+    root = fs.osfs.OSFS(tmpdir_path.parts[0])
+    p = FsPath(root, Path(*tmpdir_path.parts[1:])/"some_file")
+    with p.open() as f:
+      assert f.read() == "hello"
