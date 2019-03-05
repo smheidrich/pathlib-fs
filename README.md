@@ -140,5 +140,5 @@ There is a lot to do...
 
 - [plumbum](https://plumbum.readthedocs.io/): has ``LocalPath`` and
   ``RemotePath`` classes , which are almost (but not quite yet) compatible with
-  ``pathlib.Path``. If you just need a local/remote abstraction, these it can
-  be used for much the same purposes as this project here.
+  ``pathlib.Path``. If you just need a local/remote abstraction, these can be
+  used for much the same purposes as this project here.
