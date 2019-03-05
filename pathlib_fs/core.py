@@ -1,3 +1,4 @@
+import fs.permissions
 import pathlib
 
 
@@ -12,6 +13,16 @@ class FsPath(pathlib.PosixPath):
 
   def open(self, *args, **kwargs):
     return self.fs.open(self.relative_fs_path, *args, **kwargs)
+
+  def mkdir(self, mode=0o777, parents=False, exist_ok=False):
+    permissions = fs.permissions.Permissions(mode=mode)
+    if parents and self.parts and not self.parent.is_dir():
+      # it's fine to only progress up to where the PyFilesystem part of the
+      # path starts, as the former is guaranteed to exist (at least for OSFS),
+      # so we never have to create it
+      self.parent.mkdir(mode=mode, parents=parents, exist_ok=True)
+    self.fs.makedir(self.relative_fs_path, permissions=permissions,
+      recreate=exist_ok)
 
   @property
   def relative_fs_path(self) -> str:
@@ -42,6 +53,15 @@ class FsPath(pathlib.PosixPath):
     return "{}({}, {})".format(self.__class__.__name__, self.fs,
       repr(super().__str__()))
 
+  # stuff that can just resort to pathlib behavior directly
+  # TODO I probably have to overwrite just one internal method to make all of
+  # these work without having to write them here...
+
   def __truediv__(self, x):
-    segments = list(self.parts) + [x]
-    return self.__class__(self.fs, *segments, disallow_str=self.disallow_str)
+    p = super().__truediv__(x)
+    return self.__class__(self.fs, *(p.parts), disallow_str=self.disallow_str)
+
+  @property
+  def parent(self):
+    p = super().parent
+    return self.__class__(self.fs, *(p.parts), disallow_str=self.disallow_str)

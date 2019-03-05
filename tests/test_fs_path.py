@@ -38,6 +38,8 @@ def test_basic_pathlib_emulation():
   p2 = p / "etc"
   assert p2.as_str() == "/tmp/hello/world/etc"
   assert p2.relative_fs_path == "hello/world/etc"
+  p3 = p.parent
+  assert p3.as_str() == "/tmp/hello"
 
 def test_open():
   with TemporaryDirectory() as tmpdir:
@@ -53,3 +55,16 @@ def test_open():
     p = FsPath(root, Path(*tmpdir_path.parts[1:])/"some_file")
     with p.open() as f:
       assert f.read() == "hello"
+
+def test_mkdir():
+  with TemporaryDirectory() as tmpdir:
+    tmpdir_path = Path(tmpdir)
+    root = fs.osfs.OSFS(tmpdir)
+    p = FsPath(root, "some_dir")
+    p.mkdir()
+    assert (tmpdir_path/"some_dir").is_dir()
+    with pytest.raises(Exception):
+      p.mkdir()
+    p.mkdir(exist_ok=True)
+    (p/"subdir1"/"subdir2").mkdir(parents=True)
+    assert (tmpdir_path/"some_dir"/"subdir1"/"subdir2").is_dir()
