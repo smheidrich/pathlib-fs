@@ -1,4 +1,4 @@
-# pathlib-fs
+# [WIP] pathlib-fs
 
 [``pathlib.Path``](https://docs.python.org/3/library/pathlib.html) interface
 for [PyFilesystem](https://www.pyfilesystem.org/).
