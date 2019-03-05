@@ -1,6 +1,7 @@
 from pathlib_fs import FsPath
 
 import fs.osfs
+from pathlib import Path
 
 import pytest
 
@@ -11,6 +12,7 @@ def test_representations():
   root = fs.osfs.OSFS("/tmp")
   p = FsPath(root, "hello/world")
   assert p.as_str() == "/tmp/hello/world"
+  assert p.as_pathlib_path() == Path("/tmp/hello/world")
   assert p.relative_fs_path == "hello/world"
   assert str(p) == "/tmp/hello/world"
   assert repr(p).startswith("FsPath(")
