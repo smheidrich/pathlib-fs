@@ -53,7 +53,7 @@ class FsPath(pathlib.PosixPath):
     return "{}({}, {})".format(self.__class__.__name__, self.fs,
       repr(super().__str__()))
 
-  # stuff that can just resort to pathlib behavior directly
+  # stuff that can just wrap pathlib methods directly
   # TODO I probably have to overwrite just one internal method to make all of
   # these work without having to write them here...
 
