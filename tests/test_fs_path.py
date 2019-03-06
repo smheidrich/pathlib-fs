@@ -69,6 +69,13 @@ def test_mkdir():
     (p/"subdir1"/"subdir2").mkdir(parents=True)
     assert (tmpdir_path/"some_dir"/"subdir1"/"subdir2").is_dir()
 
+def test_isdir():
+  with TemporaryDirectory() as tmpdir:
+    tmpdir_path = Path(tmpdir)
+    root = fs.osfs.OSFS(tmpdir_path.parts[0])
+    p = FsPath(root, Path(*tmpdir_path.parts[1:]))
+    assert p.isdir()
+
 def test_home():
   h = FsPath.home()
   assert str(h) == str(Path.home())

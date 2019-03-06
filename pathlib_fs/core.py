@@ -39,6 +39,11 @@ class FsPath(pathlib.PosixPath):
     self.fs.makedir(self.relative_fs_path, permissions=permissions,
       recreate=exist_ok)
 
+  def isdir(self):
+    return self.fs.getinfo(self.relative_fs_path).is_dir
+
+  # various "representations"
+
   @property
   def relative_fs_path(self) -> str:
     """
