@@ -68,3 +68,7 @@ def test_mkdir():
     p.mkdir(exist_ok=True)
     (p/"subdir1"/"subdir2").mkdir(parents=True)
     assert (tmpdir_path/"some_dir"/"subdir1"/"subdir2").is_dir()
+
+def test_home():
+  h = FsPath.home()
+  assert str(h) == str(Path.home())

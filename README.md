@@ -92,7 +92,7 @@ Generated from ``dir(pathlib.Path)``:
 - ``expanduser``: ?
 - ``glob``: ?
 - ``group``: ?
-- ``home``: ?
+- **``home``**: done
 - ``is_absolute``: ?
 - ``is_block_device``: ?
 - ``is_char_device``: ?

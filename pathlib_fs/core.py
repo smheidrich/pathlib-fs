@@ -1,8 +1,12 @@
+import fs.osfs
 import fs.permissions
 import pathlib
 
 
 class FsPath(pathlib.PosixPath):
+
+  # constructors
+
   def __new__(cls, fs, *pathsegments, disallow_str=False):
     self = super().__new__(cls, *pathsegments)
     if self.is_absolute():
@@ -10,6 +14,17 @@ class FsPath(pathlib.PosixPath):
     self.fs = fs
     self.disallow_str = disallow_str
     return self
+
+  @classmethod
+  def home(cls, disallow_str=False):
+    # we need an explicit reference here because super().home() would try to
+    # instantiate using cls, which is our current class -> doesn't work
+    home_parts = pathlib.Path.home().parts
+    root = home_parts[0]
+    rest = home_parts[1:] if len(home_parts) > 1 else ""
+    return cls(fs.osfs.OSFS(root), *rest, disallow_str=disallow_str)
+
+  # methods that emulate pathlib via PyFilesystem
 
   def open(self, *args, **kwargs):
     return self.fs.open(self.relative_fs_path, *args, **kwargs)
