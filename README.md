@@ -88,7 +88,7 @@ Generated from ``dir(pathlib.Path)``:
 - ``chmod``: ?
 - ``cwd``: ?
 - ``drive``: ?
-- ``exists``: ?
+- **``exists``**: done
 - ``expanduser``: ?
 - ``glob``: ?
 - ``group``: ?
@@ -130,7 +130,7 @@ Generated from ``dir(pathlib.Path)``:
 - ``suffix``: ?
 - ``suffixes``: ?
 - ``symlink_to``: ?
-- ``touch``: ?
+- **``touch``**: done
 - ``unlink``: ?
 - ``with_name``: ?
 - ``with_suffix``: ?
