@@ -29,6 +29,9 @@ class FsPath(pathlib.PosixPath):
   def open(self, *args, **kwargs):
     return self.fs.open(self.relative_fs_path, *args, **kwargs)
 
+  def touch(self):
+    self.fs.touch(self.relative_fs_path)
+
   def mkdir(self, mode=0o777, parents=False, exist_ok=False):
     permissions = fs.permissions.Permissions(mode=mode)
     if parents and self.parts and not self.parent.is_dir():
@@ -38,6 +41,9 @@ class FsPath(pathlib.PosixPath):
       self.parent.mkdir(mode=mode, parents=parents, exist_ok=True)
     self.fs.makedir(self.relative_fs_path, permissions=permissions,
       recreate=exist_ok)
+
+  def exists(self):
+    return self.fs.exists(self.relative_fs_path)
 
   def isdir(self):
     return self.fs.getinfo(self.relative_fs_path).is_dir

@@ -1,10 +1,21 @@
 from pathlib_fs import FsPath
 
+import fs.memoryfs
 import fs.osfs
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
 import pytest
+
+def root_based_fspath(dir_path, relative_fs_path):
+  path = dir_path/relative_fs_path
+  root_fs = fs.osfs.OSFS(path.parts[0])
+  return FsPath(root_fs, Path(*path.parts[1:]))
+
+def dir_based_fspath(dir_path, relative_file_path):
+  dir_fs = fs.osfs.OSFS(dir_path)
+  return FsPath(dir_fs, Path(relative_file_path))
+
 
 def test_representations():
   """
@@ -69,6 +80,29 @@ def test_mkdir():
     (p/"subdir1"/"subdir2").mkdir(parents=True)
     assert (tmpdir_path/"some_dir"/"subdir1"/"subdir2").is_dir()
 
+@pytest.mark.parametrize("make_fs_path", [root_based_fspath, dir_based_fspath])
+def test_touch_and_exists(make_fs_path):
+  with TemporaryDirectory() as tmpdir:
+    tmpdir_path = Path(tmpdir)
+    tmpfile_path = tmpdir_path/"some_file"
+    p = make_fs_path(tmpdir_path, "some_file")
+    assert not p.exists()
+    p.touch()
+    assert p.exists()
+    assert tmpfile_path.exists()
+
+def test_touch_and_exists_memoryfs():
+  # this is to check that it doesn't just perform these operations via
+  # pathlib.Path
+  mem_fs = fs.memoryfs.MemoryFS()
+  relative_path = Path("some_file")
+  p = FsPath(mem_fs, relative_path)
+  assert not relative_path.exists(), "sorry; clean up your working directory"
+  assert not p.exists()
+  p.touch()
+  assert p.exists()
+  assert not relative_path.exists()
+
 def test_isdir():
   with TemporaryDirectory() as tmpdir:
     tmpdir_path = Path(tmpdir)
@@ -79,3 +113,4 @@ def test_isdir():
 def test_home():
   h = FsPath.home()
   assert str(h) == str(Path.home())
+
