@@ -98,7 +98,7 @@ Generated from ``dir(pathlib.Path)``:
 - ``is_char_device``: ?
 - **``is_dir``**: done
 - ``is_fifo``: ?
-- ``is_file``: ?
+- **``is_file``**: done
 - ``is_mount``: ?
 - ``is_reserved``: ?
 - ``is_socket``: ?

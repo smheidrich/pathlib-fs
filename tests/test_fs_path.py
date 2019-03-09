@@ -81,34 +81,40 @@ def test_mkdir():
     assert (tmpdir_path/"some_dir"/"subdir1"/"subdir2").is_dir()
 
 @pytest.mark.parametrize("make_fs_path", [root_based_fspath, dir_based_fspath])
-def test_touch_and_exists(make_fs_path):
+def test_touch_exists_is_file(make_fs_path):
   with TemporaryDirectory() as tmpdir:
     tmpdir_path = Path(tmpdir)
     tmpfile_path = tmpdir_path/"some_file"
     p = make_fs_path(tmpdir_path, "some_file")
     assert not p.exists()
+    assert not p.is_file()
     p.touch()
     assert p.exists()
+    assert p.is_file()
     assert tmpfile_path.exists()
 
-def test_touch_and_exists_memoryfs():
+def test_touch_exists_isfile_memoryfs():
   # this is to check that it doesn't just perform these operations via
   # pathlib.Path
   mem_fs = fs.memoryfs.MemoryFS()
   relative_path = Path("some_file")
   p = FsPath(mem_fs, relative_path)
   assert not relative_path.exists(), "sorry; clean up your working directory"
+  assert not relative_path.is_file()
   assert not p.exists()
+  assert not p.is_file()
   p.touch()
   assert p.exists()
+  assert p.is_file()
   assert not relative_path.exists()
+  assert not relative_path.is_file()
 
-def test_isdir():
+def test_is_dir():
   with TemporaryDirectory() as tmpdir:
     tmpdir_path = Path(tmpdir)
     root = fs.osfs.OSFS(tmpdir_path.parts[0])
     p = FsPath(root, Path(*tmpdir_path.parts[1:]))
-    assert p.isdir()
+    assert p.is_dir()
 
 def test_home():
   h = FsPath.home()

@@ -45,8 +45,11 @@ class FsPath(pathlib.PosixPath):
   def exists(self):
     return self.fs.exists(self.relative_fs_path)
 
-  def isdir(self):
-    return self.fs.getinfo(self.relative_fs_path).is_dir
+  def is_dir(self):
+    return self.fs.isdir(self.relative_fs_path)
+
+  def is_file(self):
+    return self.fs.isfile(self.relative_fs_path)
 
   # various "representations"
 
