@@ -51,6 +51,9 @@ class FsPath(pathlib.PosixPath):
   def is_file(self):
     return self.fs.isfile(self.relative_fs_path)
 
+  def iterdir(self):
+    return self.fs.listdir(self.relative_fs_path)
+
   # various "representations"
 
   @property

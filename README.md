@@ -103,7 +103,7 @@ Generated from ``dir(pathlib.Path)``:
 - ``is_reserved``: ?
 - ``is_socket``: ?
 - ``is_symlink``: ?
-- ``iterdir``: ?
+- **``iterdir``**: done
 - ``joinpath``: ?
 - ``lchmod``: ?
 - ``lstat``: ?
