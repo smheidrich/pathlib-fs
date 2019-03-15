@@ -38,7 +38,11 @@ def test_pathlib_derived_functionality():
   """
   Tests that functionality derived from pathlib with no changes still works
   """
-  pass
+  root = fs.osfs.OSFS("/tmp")
+  p = FsPath(root, "hello/world")
+  assert p.name == "world"
+  p2 = FsPath(root, "")
+  assert p2.name == "" # TODO intended?
 
 def test_basic_pathlib_emulation():
   """

@@ -109,7 +109,7 @@ Generated from ``dir(pathlib.Path)``:
 - ``lstat``: ?
 - ``match``: ?
 - **``mkdir``**: done
-- ``name``: ?
+- **``name``**: done (implicitly)
 - **``open``**: done
 - ``owner``: ?
 - **``parent``**: done
