@@ -42,6 +42,24 @@ class FsPath(pathlib.PosixPath):
     self.fs.makedir(self.relative_fs_path, permissions=permissions,
       recreate=exist_ok)
 
+  def rename(self, target):
+    if isinstance(target, FsPath):
+      if target.fs != self.fs:
+        raise ValueError("rename is only supported for {} objects based on "\
+          "the same PyFilesystem object".format(self.__class__.__name__))
+      target = target.relative_fs_path
+    else:
+      raise NotImplementedError("")
+      # what should happen here:
+      # - relative paths are interpreted as relative to cwd by pathlib => only
+      #   makes sense for isinstance(fs, OsFs)
+      # - absolute paths need some method of being interpreted with respect to
+      #   FS (probably also only makes sense for OsFs, doesn't it?)
+    self.fs.move(self.relative_fs_path, target, overwrite=False)
+
+  def unlink(self):
+    self.fs.remove(self.relative_fs_path)
+
   def exists(self):
     return self.fs.exists(self.relative_fs_path)
 

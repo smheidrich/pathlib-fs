@@ -109,6 +109,40 @@ def test_touch_exists_isfile_memoryfs():
   assert not relative_path.exists()
   assert not relative_path.is_file()
 
+@pytest.mark.xfail(strict=True)
+@pytest.mark.parametrize("make_fs_path", [root_based_fspath, dir_based_fspath])
+def test_rename_unlink_using_str(make_fs_path):
+  with TemporaryDirectory() as tmpdir:
+    tmpdir_path = Path(tmpdir)
+    tmpfile_path = tmpdir_path/"some_file"
+    tmpfile2_path = tmpdir_path/"some_file2"
+    p = make_fs_path(tmpdir_path, "some_file")
+    p.touch()
+    p.rename(str(tmpdir_path/"some_file2"))
+    assert not tmpfile_path.exists()
+    assert tmpfile2_path.exists()
+    tmpfile2_path.unlink()
+    assert not tmpfile2_path.exists()
+    p.touch()
+    p.rename(str(tmpfile2_path))
+    assert not tmpfile_path.exists()
+    assert tmpfile2_path.exists()
+
+@pytest.mark.parametrize("make_fs_path", [root_based_fspath, dir_based_fspath])
+def test_rename_unlink_using_fspath(make_fs_path):
+  with TemporaryDirectory() as tmpdir:
+    tmpdir_path = Path(tmpdir)
+    tmpfile_path = tmpdir_path/"some_file"
+    tmpfile2_path = tmpdir_path/"some_file2"
+    p = make_fs_path(tmpdir_path, "some_file")
+    p2 = p.parent/"some_file2"
+    p.touch()
+    p.rename(p2)
+    assert not tmpfile_path.exists()
+    assert tmpfile2_path.exists()
+    tmpfile2_path.unlink()
+    assert not tmpfile2_path.exists()
+
 def test_is_dir():
   with TemporaryDirectory() as tmpdir:
     tmpdir_path = Path(tmpdir)

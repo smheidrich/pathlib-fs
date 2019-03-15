@@ -118,7 +118,7 @@ Generated from ``dir(pathlib.Path)``:
 - ``read_bytes``: ?
 - ``read_text``: ?
 - ``relative_to``: ?
-- ``rename``: ?
+- **``rename``**: done (with caveats)
 - ``replace``: ?
 - ``resolve``: ?
 - ``rglob``: ?
@@ -131,7 +131,7 @@ Generated from ``dir(pathlib.Path)``:
 - ``suffixes``: ?
 - ``symlink_to``: ?
 - **``touch``**: done
-- ``unlink``: ?
+- **``unlink``**: done
 - ``with_name``: ?
 - ``with_suffix``: ?
 - ``write_bytes``: ?
