@@ -53,8 +53,12 @@ def test_basic_pathlib_emulation():
   p2 = p / "etc"
   assert p2.as_str() == "/tmp/hello/world/etc"
   assert p2.relative_fs_path == "hello/world/etc"
+  assert p.fs == p2.fs
   p3 = p.parent
   assert p3.as_str() == "/tmp/hello"
+  assert p == FsPath(root, "hello", "world")
+  # print(list(p.parents))
+  assert list(p.parents) == [ FsPath(root, "hello"), FsPath(root, "") ]
 
 def test_open():
   with TemporaryDirectory() as tmpdir:

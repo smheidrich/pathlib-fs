@@ -72,6 +72,11 @@ class FsPath(pathlib.PosixPath):
   def iterdir(self):
     return self.fs.listdir(self.relative_fs_path)
 
+  def __eq__(self, other):
+    if not isinstance(other, FsPath):
+        return NotImplemented
+    return super().__eq__(other) and self.fs == other.fs
+
   # various "representations"
 
   @property
@@ -115,3 +120,13 @@ class FsPath(pathlib.PosixPath):
   def parent(self):
     p = super().parent
     return self.__class__(self.fs, *(p.parts), disallow_str=self.disallow_str)
+
+  # debug stuff
+
+  # TODO this is actually not a good idea, because most of the object-creating
+  # methods call this internally, and it's fine as long as e.g. the fs attribute
+  # is handled separately:
+
+  # def _from_parsed_parts(self, *args, **kwargs):
+    # raise NotImplementedError("if this method ever gets called, some other "\
+      # "method isn't working properly yet")
