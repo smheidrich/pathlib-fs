@@ -1,3 +1,4 @@
+from abc import ABCMeta, abstractmethod
 import fs.osfs
 import fs.permissions
 import pathlib
@@ -7,12 +8,27 @@ class FsPath(pathlib.PosixPath):
 
   # constructors
 
-  def __new__(cls, fs, *pathsegments, disallow_str=False):
+  def __new__(cls, *args, **kwargs):
+    raise ValueError("the unbound {} class cannot be instantiated".format(
+      cls.__name__))
+
+  # TODO: bind() should reset __new__ to super().__new__, so that
+  # fspath.__class__(*pathsegments) can be used normally
+
+  @classmethod
+  def bind(cls, fs, disallow_str=False):
+    return type(
+      "BoundFsPath(fs={})".format(fs),
+      (cls,),
+      dict(fs=fs, disallow_str=disallow_str)
+    )
+
+  @classmethod
+  def from_fs_and_path(cls, fs, *pathsegments, disallow_str=False):
+    cls = cls.bind(fs=fs, disallow_str=disallow_str)
     self = super().__new__(cls, *pathsegments)
     if self.is_absolute():
       raise ValueError("absolute paths don't make sense here...")
-    self.fs = fs
-    self.disallow_str = disallow_str
     return self
 
   @classmethod
@@ -22,7 +38,7 @@ class FsPath(pathlib.PosixPath):
     home_parts = pathlib.Path.home().parts
     root = home_parts[0]
     rest = home_parts[1:] if len(home_parts) > 1 else ""
-    return cls(fs.osfs.OSFS(root), *rest, disallow_str=disallow_str)
+    return cls.from_fs_and_path(fs.osfs.OSFS(root), *rest, disallow_str=disallow_str)
 
   # methods that emulate pathlib via PyFilesystem
 
@@ -122,32 +138,3 @@ class FsPath(pathlib.PosixPath):
     return "{}({}, {})".format(self.__class__.__name__, self.fs,
       repr(super().__str__()))
 
-  # stuff that can just wrap pathlib methods directly
-  # TODO I probably have to overwrite just one internal method to make all of
-  # these work without having to write them here...
-
-  def __truediv__(self, x):
-    p = super().__truediv__(x)
-    return self.__class__(self.fs, *(p.parts), disallow_str=self.disallow_str)
-
-  @property
-  def parent(self):
-    p = super().parent
-    return self.__class__(self.fs, *(p.parts), disallow_str=self.disallow_str)
-
-  @property
-  def parents(self):
-    if len(self.parts) == 1:
-      return [ self.parent ]
-    else:
-      return [ self.parent ] + self.parent.parents
-
-  # debug stuff
-
-  # TODO this is actually not a good idea, because most of the object-creating
-  # methods call this internally, and it's fine as long as e.g. the fs attribute
-  # is handled separately:
-
-  # def _from_parsed_parts(self, *args, **kwargs):
-    # raise NotImplementedError("if this method ever gets called, some other "\
-      # "method isn't working properly yet")
