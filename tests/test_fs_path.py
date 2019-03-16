@@ -151,6 +151,17 @@ def test_rename_unlink_using_fspath(make_fs_path):
     assert tmpfile2_path.exists()
     tmpfile2_path.unlink()
     assert not tmpfile2_path.exists()
+    # test that this doesn't try to do anything across fs object boundaries
+    mem_fs = fs.memoryfs.MemoryFS()
+    relative_path = Path("some_file")
+    p3 = FsPath(mem_fs, relative_path)
+    p3.touch()
+    with pytest.raises(ValueError):
+      p3.rename(p2)
+    p3.unlink()
+    p2.touch()
+    with pytest.raises(ValueError):
+      p2.rename(p3)
 
 def test_is_dir():
   with TemporaryDirectory() as tmpdir:
