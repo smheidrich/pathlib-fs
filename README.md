@@ -20,6 +20,28 @@ convert the path to a string before opening, etc.).
 
 That's what this project aims to implement.
 
+## API
+
+To start with, the API will be as close as possible to ``pathlib.Path``'s, the
+only exception being the constructor, which reads:
+
+```python
+FsPath(fs, *path_segments)
+```
+
+- ``fs``: PyFilesystem FS object
+- ``*path_segments``: same meaning as ``pathlib.Path``
+
+Note that ``path_segments`` *must* be relative, as paths in PyFilesystem are
+always relative to the FS object.
+
+### Extensions
+
+Eventually, there will also be extensions beyond the ``pathlib.Path`` interface
+for "missing" (in my opinion, anyway) functionality such as copying.
+
+Whether these will be added in the form of subclass methods etc. is still TBD.
+
 ## Implementation status
 
 Just started, hence totally WIP.
@@ -28,7 +50,14 @@ Just started, hence totally WIP.
 
 There is a lot to do...
 
-Generated from ``dir(pathlib.Path)``:
+I'm just going through ``pathlib.Path``'s methods and re-implementing them in
+the wrapper one by one (cf. list below).
+
+If you need any of the ones that aren't implemented yet, feel free to open a
+ticket and I'll prioritize those.
+
+The list below has been generated from ``dir(pathlib.Path)``, so there are some
+internal methods in there that I'll never do.
 
 - ``__bytes__``: ?
 - ``__class__``: ?
@@ -144,3 +173,7 @@ Generated from ``dir(pathlib.Path)``:
   ``RemotePath`` classes , which are almost (but not quite yet) compatible with
   ``pathlib.Path``. If you just need a local/remote abstraction, these can be
   used for much the same purposes as this project here.
+- [fspatch](https://github.com/PyFilesystem/fspatch): from what I understand,
+  the aim of this is to be able to patch Python standard library modules to use
+  PyFilesystem internally. If this is ever finished, it would probably make
+  this wrapper pointless (?)
