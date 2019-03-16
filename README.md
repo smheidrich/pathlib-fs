@@ -114,7 +114,7 @@ Generated from ``dir(pathlib.Path)``:
 - ``owner``: ?
 - **``parent``**: done
 - **``parents``**: done
-- ``parts``: ?
+- **``parts``**: done (implicitly)
 - ``read_bytes``: ?
 - ``read_text``: ?
 - ``relative_to``: ?
