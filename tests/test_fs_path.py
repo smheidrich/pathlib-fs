@@ -16,6 +16,10 @@ def dir_based_fspath(dir_path, relative_file_path):
   dir_fs = fs.osfs.OSFS(dir_path)
   return FsPath(dir_fs, Path(relative_file_path))
 
+def test_from_absolute_path():
+  root = fs.osfs.OSFS("/tmp")
+  with pytest.raises(ValueError):
+    FsPath(root, "/hello/world")
 
 def test_representations():
   """
