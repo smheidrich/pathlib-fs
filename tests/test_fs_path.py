@@ -57,6 +57,7 @@ def test_basic_pathlib_emulation():
   p3 = p.parent
   assert p3.as_str() == "/tmp/hello"
   assert p == FsPath(root, "hello", "world")
+  assert p != "hello/world" # just to make coverage happy...
   # print(list(p.parents))
   assert list(p.parents) == [ FsPath(root, "hello"), FsPath(root, "") ]
 
