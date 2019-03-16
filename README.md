@@ -119,7 +119,7 @@ internal methods in there that I'll never do.
 - ``anchor``: ?
 - ``as_posix``: ?
 - ``as_uri``: ?
-- ``chmod``: ?
+- ``chmod``: blocked by unavailability in PyFilesystem itself...
 - ``cwd``: ?
 - ``drive``: ?
 - **``exists``**: done

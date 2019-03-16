@@ -122,6 +122,17 @@ def test_touch_exists_isfile_memoryfs():
   assert not relative_path.exists()
   assert not relative_path.is_file()
 
+@pytest.mark.xfail(raises=NotImplementedError, strict=True)
+@pytest.mark.parametrize("make_fs_path", [root_based_fspath, dir_based_fspath])
+def test_chmod(make_fs_path):
+  with TemporaryDirectory() as tmpdir:
+    tmpdir_path = Path(tmpdir)
+    tmpfile_path = tmpdir_path/"some_file"
+    p = make_fs_path(tmpdir_path, "some_file")
+    p.touch()
+    p.chmod(0o715)
+    assert (tmpfile_path.stat().st_mode & 0o777) == 0o715
+
 @pytest.mark.xfail(strict=True)
 @pytest.mark.parametrize("make_fs_path", [root_based_fspath, dir_based_fspath])
 def test_rename_unlink_using_str(make_fs_path):

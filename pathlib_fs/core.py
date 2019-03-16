@@ -60,6 +60,20 @@ class FsPath(pathlib.PosixPath):
   def unlink(self):
     self.fs.remove(self.relative_fs_path)
 
+  def chmod(self, mode):
+    raise NotImplementedError("PyFilesystem has no chmod() equivalent that I "
+      "know of, so {}.chmod won't work either".format(self.__class__.__name__))
+    # this is how it *would* work, if it was implemented properly in
+    # PyFilesystem...
+    permissions = fs.permissions.Permissions(mode=mode)
+    print(oct(permissions.mode))
+    info_dict = {
+      "access": {
+        "permissions": mode
+      }
+    }
+    self.fs.setinfo(self.relative_fs_path, info_dict)
+
   def exists(self):
     return self.fs.exists(self.relative_fs_path)
 
