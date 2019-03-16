@@ -113,7 +113,7 @@ Generated from ``dir(pathlib.Path)``:
 - **``open``**: done
 - ``owner``: ?
 - **``parent``**: done
-- ``parents``: ?
+- **``parents``**: done
 - ``parts``: ?
 - ``read_bytes``: ?
 - ``read_text``: ?

@@ -121,6 +121,13 @@ class FsPath(pathlib.PosixPath):
     p = super().parent
     return self.__class__(self.fs, *(p.parts), disallow_str=self.disallow_str)
 
+  @property
+  def parents(self):
+    if len(self.parts) == 1:
+      return [ self.parent ]
+    else:
+      return [ self.parent ] + self.parent.parents
+
   # debug stuff
 
   # TODO this is actually not a good idea, because most of the object-creating
