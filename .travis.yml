@@ -7,6 +7,6 @@ install:
   - pip install codecov pytest-cov
   - pip install .
 script:
-  - pytest --cov=./
+  - pytest --cov=pathlib_fs
 after_success:
   - codecov
