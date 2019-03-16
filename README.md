@@ -7,6 +7,8 @@ for [PyFilesystem](https://www.pyfilesystem.org/).
 
 ## What?
 
+See also: https://github.com/PyFilesystem/pyfilesystem2/issues/238
+
 PyFilesystem provides an unified interface for dealing with various kinds of
 (generalized) "filesystems", e.g. the regular local filesystem, a virtual
 in-memory filesystem, filesystems on remote machines, ...
