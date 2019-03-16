@@ -1,3 +1,5 @@
+[![Travis build status](https://travis-ci.org/smheidrich/pathlib-fs.svg?branch=master)](https://travis-ci.org/smheidrich/pathlib-fs)
+
 # [WIP] pathlib-fs
 
 [``pathlib.Path``](https://docs.python.org/3/library/pathlib.html) interface
