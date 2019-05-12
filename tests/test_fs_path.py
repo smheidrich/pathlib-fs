@@ -77,9 +77,6 @@ def test_basic_pathlib_emulation():
   assert list(p.parents) == [ FsPath(root, "hello"), FsPath(root, "") ]
 
 
-
-
-
 def test_write_file_with_pathlib_read_with_ours():
   with TemporaryDirectory() as tmpdir:
     tmpdir_path = Path(tmpdir)
@@ -95,19 +92,6 @@ def test_write_file_with_pathlib_read_with_ours():
     with p.open() as f:
       assert f.read() == "hello"
 
-
-def test_mkdir():
-  with TemporaryDirectory() as tmpdir:
-    tmpdir_path = Path(tmpdir)
-    root = fs.osfs.OSFS(tmpdir)
-    p = FsPath(root, "some_dir")
-    p.mkdir()
-    assert (tmpdir_path/"some_dir").is_dir()
-    with pytest.raises(Exception):
-      p.mkdir()
-    p.mkdir(exist_ok=True)
-    (p/"subdir1"/"subdir2").mkdir(parents=True)
-    assert (tmpdir_path/"some_dir"/"subdir1"/"subdir2").is_dir()
 
 @pytest.mark.parametrize("make_fs_path", [root_based_fspath, dir_based_fspath])
 def test_touch_exists_is_file(make_fs_path):
