@@ -130,6 +130,14 @@ class FsPath(pathlib.PosixPath):
     p = super().__truediv__(x)
     return self.__class__(self.fs, *(p.parts), disallow_str=self.disallow_str)
 
+  def with_name(self, name):
+    p = super().with_name(name)
+    return self.__class__(self.fs, *(p.parts), disallow_str=self.disallow_str)
+
+  def with_suffix(self, suffix):
+    p = super().with_suffix(suffix)
+    return self.__class__(self.fs, *(p.parts), disallow_str=self.disallow_str)
+
   @property
   def parent(self):
     p = super().parent

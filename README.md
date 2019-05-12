@@ -166,8 +166,8 @@ internal methods in there that I'll never do.
 - ``symlink_to``: ?
 - **``touch``**: done
 - **``unlink``**: done
-- ``with_name``: ?
-- ``with_suffix``: ?
+- **``with_name``**: done
+- **``with_suffix``**: done
 - ``write_bytes``: ?
 - ``write_text``: ?
 

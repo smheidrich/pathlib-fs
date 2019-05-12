@@ -48,6 +48,12 @@ def test_pathlib_derived_functionality():
   assert p.name == "world"
   p2 = FsPath(root, "")
   assert p2.name == "" # TODO intended?
+  p3 = p.with_name("universe")
+  assert str(p3) == "/tmp/hello/universe"
+  assert isinstance(p3, FsPath)
+  p4 = p3.with_suffix(".xyz")
+  assert str(p4) == "/tmp/hello/universe.xyz"
+  assert isinstance(p4, FsPath)
 
 def test_basic_pathlib_emulation():
   """
