@@ -61,60 +61,8 @@ the wrapper one by one (cf. list below).
 If you need any of the ones that aren't implemented yet, feel free to open a
 ticket and I'll prioritize those.
 
-The list below has been generated from ``dir(pathlib.Path)``, so there are some
-internal methods in there that I'll never do.
+#### Regular methods
 
-- ``__bytes__``: ?
-- ``__class__``: ?
-- ``__delattr__``: ?
-- ``__dir__``: ?
-- ``__doc__``: ?
-- ``__enter__``: ?
-- ``__eq__``: ?
-- ``__exit__``: ?
-- ``__format__``: ?
-- ``__fspath__``: ?
-- ``__ge__``: ?
-- ``__getattribute__``: ?
-- ``__gt__``: ?
-- ``__hash__``: ?
-- ``__init__``: ?
-- ``__init_subclass__``: ?
-- ``__le__``: ?
-- ``__lt__``: ?
-- ``__module__``: ?
-- ``__ne__``: ?
-- **``__new__``**: done
-- ``__reduce__``: ?
-- ``__reduce_ex__``: ?
-- **``__repr__``**: done
-- ~~``__rtruediv__``~~ probably doesn't make sense?
-- ``__setattr__``: ?
-- ``__sizeof__``: ?
-- ``__slots__``: ?
-- **``__str__``**: done (extension: can be forbidden)
-- ``__subclasshook__``: ?
-- **``__truediv__``**: done
-- ``_accessor``: ?
-- ``_cached_cparts``: ?
-- ``_closed``: ?
-- ``_cparts``: ?
-- ``_drv``: ?
-- ``_format_parsed_parts``: ?
-- ``_from_parsed_parts``: ?
-- ``_from_parts``: ?
-- ``_hash``: ?
-- ``_init``: ?
-- ``_make_child``: ?
-- ``_make_child_relpath``: ?
-- ``_opener``: ?
-- ``_parse_args``: ?
-- ``_parts``: ?
-- ``_pparts``: ?
-- ``_raise_closed``: ?
-- ``_raw_open``: ?
-- ``_root``: ?
-- ``_str``: ?
 - ``absolute``: ?
 - ``anchor``: ?
 - ``as_posix``: ?
@@ -170,6 +118,65 @@ internal methods in there that I'll never do.
 - **``with_suffix``**: done
 - ``write_bytes``: ?
 - ``write_text``: ?
+
+#### Special methods
+
+- ``__bytes__``: ?
+- ``__class__``: ?
+- ``__delattr__``: ?
+- ``__dir__``: ?
+- ``__doc__``: ?
+- ``__enter__``: ?
+- ``__eq__``: ?
+- ``__exit__``: ?
+- ``__format__``: ?
+- ``__fspath__``: ?
+- ``__ge__``: ?
+- ``__getattribute__``: ?
+- ``__gt__``: ?
+- ``__hash__``: ?
+- ~~``__init__``~~: already covered by ``__new__``
+- ``__init_subclass__``: ?
+- ``__le__``: ?
+- ``__lt__``: ?
+- ``__module__``: ?
+- ``__ne__``: ?
+- **``__new__``**: done
+- ``__reduce__``: ?
+- ``__reduce_ex__``: ?
+- **``__repr__``**: done
+- ~~``__rtruediv__``~~ probably doesn't make sense?
+- ``__setattr__``: ?
+- ``__sizeof__``: ?
+- ``__slots__``: ?
+- **``__str__``**: done (extension: can be forbidden)
+- ``__subclasshook__``: ?
+- **``__truediv__``**: done
+
+#### Internal methods
+
+I don't think I should implement any of those... but for completeness's sake:
+
+- ``_accessor``: ?
+- ``_cached_cparts``: ?
+- ``_closed``: ?
+- ``_cparts``: ?
+- ``_drv``: ?
+- ``_format_parsed_parts``: ?
+- ``_from_parsed_parts``: ?
+- ``_from_parts``: ?
+- ``_hash``: ?
+- ``_init``: ?
+- ``_make_child``: ?
+- ``_make_child_relpath``: ?
+- ``_opener``: ?
+- ``_parse_args``: ?
+- ``_parts``: ?
+- ``_pparts``: ?
+- ``_raise_closed``: ?
+- ``_raw_open``: ?
+- ``_root``: ?
+- ``_str``: ?
 
 
 ## Related projects
