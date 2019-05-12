@@ -3,9 +3,14 @@ from pathlib_fs import FsPath
 import fs.path
 from pathlib import Path
 
+import pytest
+
 def create_some_dir_in_tmpdir(general_fs_tmpdir):
   p = FsPath(general_fs_tmpdir.fs, general_fs_tmpdir.path, "some_dir")
   p.mkdir()
+  with pytest.raises(Exception):
+    p.mkdir()
+  p.mkdir(exist_ok=True)
 
 def test_mkdir_check_with_pyfilesystem(general_fs_tmpdir):
   create_some_dir_in_tmpdir(general_fs_tmpdir)
