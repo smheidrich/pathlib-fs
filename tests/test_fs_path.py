@@ -2,6 +2,7 @@ from pathlib_fs import FsPath
 
 import fs.memoryfs
 import fs.osfs
+import fs.path
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
@@ -65,7 +66,11 @@ def test_basic_pathlib_emulation():
   # print(list(p.parents))
   assert list(p.parents) == [ FsPath(root, "hello"), FsPath(root, "") ]
 
-def test_open():
+
+
+
+
+def test_write_file_with_pathlib_read_with_ours():
   with TemporaryDirectory() as tmpdir:
     tmpdir_path = Path(tmpdir)
     with (tmpdir_path/"some_file").open("w") as f:
@@ -79,6 +84,7 @@ def test_open():
     p = FsPath(root, Path(*tmpdir_path.parts[1:])/"some_file")
     with p.open() as f:
       assert f.read() == "hello"
+
 
 def test_mkdir():
   with TemporaryDirectory() as tmpdir:
