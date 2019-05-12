@@ -108,7 +108,7 @@ ticket and I'll prioritize those.
 - ``root``: ?
 - ``samefile``: ?
 - ``stat``: ?
-- ``stem``: ?
+- **``stem``**: done (implicitly)
 - **``suffix``**: done (implicitly)
 - **``suffixes``**: done (implicitly)
 - ``symlink_to``: ?
