@@ -54,6 +54,9 @@ def test_pathlib_derived_functionality():
   p4 = p3.with_suffix(".xyz")
   assert str(p4) == "/tmp/hello/universe.xyz"
   assert isinstance(p4, FsPath)
+  assert p4.suffix == ".xyz"
+  assert p4.suffixes == [".xyz"]
+  assert (p/"file.suf1.suf2").suffixes == [".suf1", ".suf2"]
 
 def test_basic_pathlib_emulation():
   """

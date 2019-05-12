@@ -161,8 +161,8 @@ internal methods in there that I'll never do.
 - ``samefile``: ?
 - ``stat``: ?
 - ``stem``: ?
-- ``suffix``: ?
-- ``suffixes``: ?
+- **``suffix``**: done (implicitly)
+- **``suffixes``**: done (implicitly)
 - ``symlink_to``: ?
 - **``touch``**: done
 - **``unlink``**: done
