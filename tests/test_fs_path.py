@@ -77,51 +77,6 @@ def test_basic_pathlib_emulation():
   assert list(p.parents) == [ FsPath(root, "hello"), FsPath(root, "") ]
 
 
-def test_write_file_with_pathlib_read_with_ours():
-  with TemporaryDirectory() as tmpdir:
-    tmpdir_path = Path(tmpdir)
-    with (tmpdir_path/"some_file").open("w") as f:
-      f.write("hello")
-    root = fs.osfs.OSFS(tmpdir)
-    p = FsPath(root, "some_file")
-    with p.open() as f:
-      assert f.read() == "hello"
-    # also test another way of addressing the file just to be sure:
-    root = fs.osfs.OSFS(tmpdir_path.parts[0])
-    p = FsPath(root, Path(*tmpdir_path.parts[1:])/"some_file")
-    with p.open() as f:
-      assert f.read() == "hello"
-
-
-@pytest.mark.parametrize("make_fs_path", [root_based_fspath, dir_based_fspath])
-def test_touch_exists_is_file(make_fs_path):
-  with TemporaryDirectory() as tmpdir:
-    tmpdir_path = Path(tmpdir)
-    tmpfile_path = tmpdir_path/"some_file"
-    p = make_fs_path(tmpdir_path, "some_file")
-    assert not p.exists()
-    assert not p.is_file()
-    p.touch()
-    assert p.exists()
-    assert p.is_file()
-    assert tmpfile_path.exists()
-
-def test_touch_exists_isfile_memoryfs():
-  # this is to check that it doesn't just perform these operations via
-  # pathlib.Path
-  mem_fs = fs.memoryfs.MemoryFS()
-  relative_path = Path("some_file")
-  p = FsPath(mem_fs, relative_path)
-  assert not relative_path.exists(), "sorry; clean up your working directory"
-  assert not relative_path.is_file()
-  assert not p.exists()
-  assert not p.is_file()
-  p.touch()
-  assert p.exists()
-  assert p.is_file()
-  assert not relative_path.exists()
-  assert not relative_path.is_file()
-
 @pytest.mark.xfail(raises=NotImplementedError, strict=True)
 @pytest.mark.parametrize("make_fs_path", [root_based_fspath, dir_based_fspath])
 def test_chmod(make_fs_path):
