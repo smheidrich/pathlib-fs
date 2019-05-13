@@ -133,13 +133,6 @@ def test_rename_unlink_using_fspath(make_fs_path):
     with pytest.raises(ValueError):
       p2.rename(p3)
 
-def test_is_dir():
-  with TemporaryDirectory() as tmpdir:
-    tmpdir_path = Path(tmpdir)
-    root = fs.osfs.OSFS(tmpdir_path.parts[0])
-    p = FsPath(root, Path(*tmpdir_path.parts[1:]))
-    assert p.is_dir()
-
 @pytest.mark.parametrize("make_fs_path", [root_based_fspath, dir_based_fspath])
 def test_iterdir(make_fs_path):
   with TemporaryDirectory() as tmpdir:
