@@ -76,7 +76,6 @@ def test_basic_pathlib_emulation():
   # print(list(p.parents))
   assert list(p.parents) == [ FsPath(root, "hello"), FsPath(root, "") ]
 
-
 @pytest.mark.xfail(raises=NotImplementedError, strict=True)
 @pytest.mark.parametrize("make_fs_path", [root_based_fspath, dir_based_fspath])
 def test_chmod(make_fs_path):
@@ -106,32 +105,6 @@ def test_rename_unlink_using_str(make_fs_path):
     p.rename(str(tmpfile2_path))
     assert not tmpfile_path.exists()
     assert tmpfile2_path.exists()
-
-@pytest.mark.parametrize("make_fs_path", [root_based_fspath, dir_based_fspath])
-def test_rename_unlink_using_fspath(make_fs_path):
-  with TemporaryDirectory() as tmpdir:
-    tmpdir_path = Path(tmpdir)
-    tmpfile_path = tmpdir_path/"some_file"
-    tmpfile2_path = tmpdir_path/"some_file2"
-    p = make_fs_path(tmpdir_path, "some_file")
-    p2 = p.parent/"some_file2"
-    p.touch()
-    p.rename(p2)
-    assert not tmpfile_path.exists()
-    assert tmpfile2_path.exists()
-    tmpfile2_path.unlink()
-    assert not tmpfile2_path.exists()
-    # test that this doesn't try to do anything across fs object boundaries
-    mem_fs = fs.memoryfs.MemoryFS()
-    relative_path = Path("some_file")
-    p3 = FsPath(mem_fs, relative_path)
-    p3.touch()
-    with pytest.raises(ValueError):
-      p3.rename(p2)
-    p3.unlink()
-    p2.touch()
-    with pytest.raises(ValueError):
-      p2.rename(p3)
 
 @pytest.mark.parametrize("make_fs_path", [root_based_fspath, dir_based_fspath])
 def test_iterdir(make_fs_path):
