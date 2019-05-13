@@ -106,25 +106,6 @@ def test_rename_unlink_using_str(make_fs_path):
     assert not tmpfile_path.exists()
     assert tmpfile2_path.exists()
 
-@pytest.mark.parametrize("make_fs_path", [root_based_fspath, dir_based_fspath])
-def test_iterdir(make_fs_path):
-  with TemporaryDirectory() as tmpdir:
-    tmpdir_path = Path(tmpdir)
-    p = make_fs_path(tmpdir_path, "")
-    assert len(set(p.iterdir())) == 0
-    sub_path = Path(tmpdir)/"sub"
-    sub_path.mkdir()
-    assert set(p.iterdir()) == set(["sub"])
-    tmpfile_path = tmpdir_path/"some_file"
-    tmpfile_path.touch()
-    assert set(p.iterdir()) == set(["sub", "some_file"])
-    tmpfile2_path = tmpdir_path/"some_file2"
-    tmpfile2_path.touch()
-    assert set(p.iterdir()) == set(["sub", "some_file", "some_file2"])
-    subtmpfile_path = sub_path/"some_file"
-    subtmpfile_path.touch()
-    assert set(p.iterdir()) == set(["sub", "some_file", "some_file2"])
-
 def test_home():
   h = FsPath.home()
   assert str(h) == str(Path.home())
