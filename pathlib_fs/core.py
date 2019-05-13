@@ -24,6 +24,14 @@ class FsPath(pathlib.PosixPath):
     rest = home_parts[1:] if len(home_parts) > 1 else ""
     return cls(fs.osfs.OSFS(root), *rest, disallow_str=disallow_str)
 
+  @classmethod
+  def cwd(cls, disallow_str=False):
+    # cf. comment on home() above
+    cwd_parts = pathlib.Path.cwd().parts
+    root = cwd_parts[0]
+    rest = cwd_parts[1:] if len(cwd_parts) > 1 else ""
+    return cls(fs.osfs.OSFS(root), *rest, disallow_str=disallow_str)
+
   # methods that emulate pathlib via PyFilesystem
 
   def open(self, *args, **kwargs):

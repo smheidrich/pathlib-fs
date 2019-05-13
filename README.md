@@ -64,6 +64,7 @@ ticket and I'll prioritize those.
 #### Regular methods
 
 - Done
+    - ``cwd``: done
     - ``exists``: done
     - ``home``: done
     - ``is_dir``: done
@@ -87,7 +88,6 @@ ticket and I'll prioritize those.
     - ``anchor``: ?
     - ``as_posix``: ?
     - ``as_uri``: ?
-    - ``cwd``: ?
     - ``expanduser``: ?
     - ``glob``: ?
     - ``group``: ?

@@ -110,3 +110,6 @@ def test_home():
   h = FsPath.home()
   assert str(h) == str(Path.home())
 
+def test_cwd():
+  h = FsPath.cwd()
+  assert str(h) == str(Path.cwd())
