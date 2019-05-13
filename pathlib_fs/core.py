@@ -158,6 +158,17 @@ class FsPath(pathlib.PosixPath):
     else:
       return [ self.parent ] + self.parent.parents
 
+  def relative_to(self, other):
+    if isinstance(other, FsPath):
+      if other.fs != self.fs:
+        raise ValueError("relative_to is only supported for {} objects based "\
+          "on the same PyFilesystem object".format(self.__class__.__name__))
+    else:
+      raise NotImplementedError("no idea what should happen here...")
+    # TODO I'm returning a PurePath here because relative paths IMO don't make
+    # sense for FsPaths... but yeah no idea really
+    return pathlib.PurePath(*(super().relative_to(other).parts))
+
   # debug stuff
 
   # TODO this is actually not a good idea, because most of the object-creating

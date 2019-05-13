@@ -3,7 +3,7 @@ from pathlib_fs import FsPath
 import fs.memoryfs
 import fs.osfs
 import fs.path
-from pathlib import Path
+from pathlib import Path, PurePath
 from tempfile import TemporaryDirectory
 
 import pytest
@@ -58,6 +58,9 @@ def test_pathlib_derived_functionality():
   assert p4.suffixes == [".xyz"]
   assert p4.stem == "universe"
   assert (p/"file.suf1.suf2").suffixes == [".suf1", ".suf2"]
+  assert (p/"relative/test").relative_to(p) == PurePath("relative/test")
+  with pytest.raises(ValueError):
+    (p/"relative/test").relative_to(FsPath(fs.memoryfs.MemoryFS(), "/tmp"))
 
 def test_basic_pathlib_emulation():
   """

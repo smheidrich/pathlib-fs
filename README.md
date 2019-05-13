@@ -76,6 +76,7 @@ ticket and I'll prioritize those.
     - ``parent``: done
     - ``parents``: done
     - ``parts``: done (implicitly)
+    - ``relative_to``: done (with caveats)
     - ``rename``: done (with caveats)
     - ``stem``: done (implicitly)
     - ``suffix``: done (implicitly)
@@ -105,7 +106,6 @@ ticket and I'll prioritize those.
     - ``owner``: ?
     - ``read_bytes``: ?
     - ``read_text``: ?
-    - ``relative_to``: ?
     - ``replace``: ?
     - ``rglob``: ?
     - ``rmdir``: ?
