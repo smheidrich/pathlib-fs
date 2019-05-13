@@ -60,7 +60,7 @@ def test_pathlib_derived_functionality():
   assert (p/"file.suf1.suf2").suffixes == [".suf1", ".suf2"]
   assert (p/"relative/test").relative_to(p) == PurePath("relative/test")
   with pytest.raises(ValueError):
-    (p/"relative/test").relative_to(FsPath(fs.memoryfs.MemoryFS(), "/tmp"))
+    (p/"relative/test").relative_to(FsPath(fs.memoryfs.MemoryFS(), "tmp"))
 
 def test_basic_pathlib_emulation():
   """
