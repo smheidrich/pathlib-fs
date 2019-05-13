@@ -1,6 +1,5 @@
 from pathlib_fs import FsPath
 
-from contextlib import contextmanager
 import fs.path
 from pathlib import Path
 
