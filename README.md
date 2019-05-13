@@ -63,95 +63,101 @@ ticket and I'll prioritize those.
 
 #### Regular methods
 
-- ``absolute``: ?
-- ``anchor``: ?
-- ``as_posix``: ?
-- ``as_uri``: ?
-- ``chmod``: blocked by unavailability in PyFilesystem itself...
-- ``cwd``: ?
-- ``drive``: ?
-- **``exists``**: done
-- ``expanduser``: ?
-- ``glob``: ?
-- ``group``: ?
-- **``home``**: done
-- ``is_absolute``: ?
-- ``is_block_device``: ?
-- ``is_char_device``: ?
-- **``is_dir``**: done
-- ``is_fifo``: ?
-- **``is_file``**: done
-- ``is_mount``: ?
-- ``is_reserved``: ?
-- ``is_socket``: ?
-- ``is_symlink``: ?
-- **``iterdir``**: done
-- ``joinpath``: ?
-- ``lchmod``: ?
-- ``lstat``: ?
-- ``match``: ?
-- **``mkdir``**: done
-- **``name``**: done (implicitly)
-- **``open``**: done
-- ``owner``: ?
-- **``parent``**: done
-- **``parents``**: done
-- **``parts``**: done (implicitly)
-- ``read_bytes``: ?
-- ``read_text``: ?
-- ``relative_to``: ?
-- **``rename``**: done (with caveats)
-- ``replace``: ?
-- ``resolve``: ?
-- ``rglob``: ?
-- ``rmdir``: ?
-- ``root``: ?
-- ``samefile``: ?
-- ``stat``: ?
-- **``stem``**: done (implicitly)
-- **``suffix``**: done (implicitly)
-- **``suffixes``**: done (implicitly)
-- ``symlink_to``: ?
-- **``touch``**: done
-- **``unlink``**: done
-- **``with_name``**: done
-- **``with_suffix``**: done
-- ``write_bytes``: ?
-- ``write_text``: ?
+- Done
+    - **``exists``**: done
+    - **``home``**: done
+    - **``is_dir``**: done
+    - **``is_file``**: done
+    - **``iterdir``**: done
+    - **``mkdir``**: done
+    - **``name``**: done (implicitly)
+    - **``open``**: done
+    - **``parent``**: done
+    - **``parents``**: done
+    - **``parts``**: done (implicitly)
+    - **``rename``**: done (with caveats)
+    - **``stem``**: done (implicitly)
+    - **``suffix``**: done (implicitly)
+    - **``suffixes``**: done (implicitly)
+    - **``touch``**: done
+    - **``unlink``**: done
+    - **``with_name``**: done
+    - **``with_suffix``**: done
+- To do
+    - ``anchor``: ?
+    - ``as_posix``: ?
+    - ``as_uri``: ?
+    - ``cwd``: ?
+    - ``expanduser``: ?
+    - ``glob``: ?
+    - ``group``: ?
+    - ``is_block_device``: ?
+    - ``is_char_device``: ?
+    - ``is_fifo``: ?
+    - ``is_mount``: ?
+    - ``is_reserved``: ?
+    - ``is_socket``: ?
+    - ``is_symlink``: ?
+    - ``joinpath``: ?
+    - ``lchmod``: ?
+    - ``lstat``: ?
+    - ``match``: ?
+    - ``owner``: ?
+    - ``read_bytes``: ?
+    - ``read_text``: ?
+    - ``relative_to``: ?
+    - ``replace``: ?
+    - ``rglob``: ?
+    - ``rmdir``: ?
+    - ``samefile``: ?
+    - ``stat``: ?
+    - ``symlink_to``: ?
+    - ``write_bytes``: ?
+    - ``write_text``: ?
+- To do, not clear what should happen
+    - ``absolute``: ?
+    - ``chmod``: blocked by unavailability in PyFilesystem itself...
+    - ``drive``: ?
+    - ``is_absolute``: ?
+    - ``root``: ?
+    - ``resolve``: ?
 
 #### Special methods
 
-- ``__bytes__``: ?
-- ``__class__``: ?
-- ``__delattr__``: ?
-- ``__dir__``: ?
-- ``__doc__``: ?
-- ``__enter__``: ?
-- ``__eq__``: ?
-- ``__exit__``: ?
-- ``__format__``: ?
-- ``__fspath__``: ?
-- ``__ge__``: ?
-- ``__getattribute__``: ?
-- ``__gt__``: ?
-- ``__hash__``: ?
-- ~~``__init__``~~: already covered by ``__new__``
-- ``__init_subclass__``: ?
-- ``__le__``: ?
-- ``__lt__``: ?
-- ``__module__``: ?
-- ``__ne__``: ?
-- **``__new__``**: done
-- ``__reduce__``: ?
-- ``__reduce_ex__``: ?
-- **``__repr__``**: done
-- ~~``__rtruediv__``~~ probably doesn't make sense?
-- ``__setattr__``: ?
-- ``__sizeof__``: ?
-- ``__slots__``: ?
-- **``__str__``**: done (extension: can be forbidden)
-- ``__subclasshook__``: ?
-- **``__truediv__``**: done
+- Done
+    - **``__new__``**: done
+    - **``__repr__``**: done
+    - ~~``__init__``~~: already covered by ``__new__``
+    - **``__str__``**: done (extension: can be forbidden)
+    - **``__truediv__``**: done
+- To do
+    - ``__bytes__``: ?
+    - ``__class__``: ?
+    - ``__delattr__``: ?
+    - ``__dir__``: ?
+    - ``__doc__``: ?
+    - ``__enter__``: ?
+    - ``__eq__``: ?
+    - ``__exit__``: ?
+    - ``__format__``: ?
+    - ``__fspath__``: ?
+    - ``__ge__``: ?
+    - ``__getattribute__``: ?
+    - ``__gt__``: ?
+    - ``__hash__``: ?
+    - ``__init_subclass__``: ?
+    - ``__le__``: ?
+    - ``__lt__``: ?
+    - ``__module__``: ?
+    - ``__ne__``: ?
+    - ``__reduce__``: ?
+    - ``__reduce_ex__``: ?
+    - ``__setattr__``: ?
+    - ``__sizeof__``: ?
+    - ``__slots__``: ?
+    - ``__subclasshook__``: ?
+- To do, not clear what should happen
+    - ~~``__rtruediv__``~~ probably doesn't make sense?
 
 #### Internal methods
 
