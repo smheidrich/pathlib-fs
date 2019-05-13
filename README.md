@@ -64,25 +64,25 @@ ticket and I'll prioritize those.
 #### Regular methods
 
 - Done
-    - **``exists``**: done
-    - **``home``**: done
-    - **``is_dir``**: done
-    - **``is_file``**: done
-    - **``iterdir``**: done
-    - **``mkdir``**: done
-    - **``name``**: done (implicitly)
-    - **``open``**: done
-    - **``parent``**: done
-    - **``parents``**: done
-    - **``parts``**: done (implicitly)
-    - **``rename``**: done (with caveats)
-    - **``stem``**: done (implicitly)
-    - **``suffix``**: done (implicitly)
-    - **``suffixes``**: done (implicitly)
-    - **``touch``**: done
-    - **``unlink``**: done
-    - **``with_name``**: done
-    - **``with_suffix``**: done
+    - ``exists``: done
+    - ``home``: done
+    - ``is_dir``: done
+    - ``is_file``: done
+    - ``iterdir``: done
+    - ``mkdir``: done
+    - ``name``: done (implicitly)
+    - ``open``: done
+    - ``parent``: done
+    - ``parents``: done
+    - ``parts``: done (implicitly)
+    - ``rename``: done (with caveats)
+    - ``stem``: done (implicitly)
+    - ``suffix``: done (implicitly)
+    - ``suffixes``: done (implicitly)
+    - ``touch``: done
+    - ``unlink``: done
+    - ``with_name``: done
+    - ``with_suffix``: done
 - To do
     - ``anchor``: ?
     - ``as_posix``: ?
@@ -125,11 +125,11 @@ ticket and I'll prioritize those.
 #### Special methods
 
 - Done
-    - **``__new__``**: done
-    - **``__repr__``**: done
+    - ``__new__``: done
+    - ``__repr__``: done
     - ~~``__init__``~~: already covered by ``__new__``
-    - **``__str__``**: done (extension: can be forbidden)
-    - **``__truediv__``**: done
+    - ``__str__``: done (extension: can be forbidden)
+    - ``__truediv__``: done
 - To do
     - ``__bytes__``: ?
     - ``__class__``: ?
