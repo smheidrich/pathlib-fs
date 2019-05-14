@@ -33,16 +33,16 @@ def general_osfs_tmpdir(request):
 
 @contextmanager
 def tmpfs_tmpdir():
+  _fs = fs.tempfs.TempFS()
+  yield DumbFsPath(_fs, "")
+
+@contextmanager
+def memoryfs_tmpdir():
   _fs = fs.memoryfs.MemoryFS()
   try:
     yield DumbFsPath(_fs, "")
   finally:
     _fs.close()
-
-@contextmanager
-def memoryfs_tmpdir():
-  _fs = fs.tempfs.TempFS()
-  yield DumbFsPath(_fs, "")
 
 
 @pytest.fixture(params=[
