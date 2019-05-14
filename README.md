@@ -69,6 +69,7 @@ ticket and I'll prioritize those.
     - ``home``: done
     - ``is_dir``: done
     - ``is_file``: done
+    - ``is_symlink``: done
     - ``iterdir``: done
     - ``mkdir``: done
     - ``name``: done (implicitly)
@@ -98,7 +99,6 @@ ticket and I'll prioritize those.
     - ``is_mount``: ?
     - ``is_reserved``: ?
     - ``is_socket``: ?
-    - ``is_symlink``: ?
     - ``joinpath``: ?
     - ``lchmod``: ?
     - ``lstat``: ?
@@ -111,7 +111,6 @@ ticket and I'll prioritize those.
     - ``rmdir``: ?
     - ``samefile``: ?
     - ``stat``: ?
-    - ``symlink_to``: ?
     - ``write_bytes``: ?
     - ``write_text``: ?
 - To do, not clear what should happen
@@ -121,6 +120,7 @@ ticket and I'll prioritize those.
     - ``is_absolute``: ?
     - ``root``: ?
     - ``resolve``: ?
+    - ``symlink_to``: blocked by unavailability in PyFilesystem itself...
 
 #### Special methods
 

@@ -82,6 +82,10 @@ class FsPath(pathlib.PosixPath):
     }
     self.fs.setinfo(self.relative_fs_path, info_dict)
 
+  def symlink_to(self, other):
+    raise NotImplementedError("how does one create symlinks in PyFilesystem? "\
+      "let me know at https://github.com/smheidrich/pathlib-fs/issues/new")
+
   def exists(self):
     return self.fs.exists(self.relative_fs_path)
 
@@ -90,6 +94,12 @@ class FsPath(pathlib.PosixPath):
 
   def is_file(self):
     return self.fs.isfile(self.relative_fs_path)
+
+  def is_symlink(self):
+    # TODO report this to PyFilesystem... islink should just return False if
+    # the path doesn't exist, because isfile and isdir do the same; but right
+    # now it raises an exception, so we have to do this roundabout thing
+    return self.exists() and self.fs.islink(self.relative_fs_path)
 
   def iterdir(self):
     return self.fs.listdir(self.relative_fs_path)
