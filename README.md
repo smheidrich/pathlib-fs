@@ -127,37 +127,38 @@ ticket and I'll prioritize those.
 - Done
     - ``__new__``: done
     - ``__repr__``: done
-    - ~~``__init__``~~: already covered by ``__new__``
     - ``__str__``: done (extension: can be forbidden)
     - ``__truediv__``: done
+- No point doing
+    - ``__class__``: Python internal
+    - ``__delattr__``: Python internal
+    - ``__dir__``: Python internal
+    - ``__doc__``: Python internal
+    - ``__getattribute__``: Python internal
+    - ``__init__``: already covered by ``__new__``
+    - ``__init_subclass__``: Python internal
+    - ``__module__``: Python internal
+    - ``__setattr__``: Python internal
+    - ``__subclasshook__``: Python internal
+    - ``__slots__``: Python internal
+    - ``__sizeof__``: Python internal
 - To do
     - ``__bytes__``: ?
-    - ``__class__``: ?
-    - ``__delattr__``: ?
-    - ``__dir__``: ?
-    - ``__doc__``: ?
     - ``__enter__``: ?
     - ``__eq__``: ?
     - ``__exit__``: ?
     - ``__format__``: ?
     - ``__fspath__``: ?
     - ``__ge__``: ?
-    - ``__getattribute__``: ?
     - ``__gt__``: ?
     - ``__hash__``: ?
-    - ``__init_subclass__``: ?
     - ``__le__``: ?
     - ``__lt__``: ?
-    - ``__module__``: ?
     - ``__ne__``: ?
     - ``__reduce__``: ?
     - ``__reduce_ex__``: ?
-    - ``__setattr__``: ?
-    - ``__sizeof__``: ?
-    - ``__slots__``: ?
-    - ``__subclasshook__``: ?
 - To do, not clear what should happen
-    - ~~``__rtruediv__``~~ probably doesn't make sense?
+    - ``__rtruediv__``: probably doesn't make sense?
 
 #### Internal methods
 
