@@ -72,6 +72,7 @@ ticket and I'll prioritize those.
 #### Regular methods
 
 - Done
+    - ``as_posix``: done
     - ``as_uri``: done
     - ``cwd``: done
     - ``exists``: done
@@ -114,7 +115,6 @@ ticket and I'll prioritize those.
     - ``write_text``: done (implicitly)
 - To do
     - ``anchor``: ?
-    - ``as_posix``: ?
     - ``is_mount``: ?
     - ``is_reserved``: ?
     - ``match``: ?

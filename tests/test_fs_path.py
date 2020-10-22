@@ -39,6 +39,7 @@ def test_representations():
   with pytest.raises(ValueError):
     p_no_str = FsPath(root, "hello/world", disallow_str=True)
     str(p_no_str)
+  assert p.as_posix() == "/tmp/hello/world"
 
 def test_pathlib_derived_functionality():
   """

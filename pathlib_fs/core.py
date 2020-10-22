@@ -182,6 +182,9 @@ class FsPath(pathlib.PosixPath):
     # TODO --> report this as a bug!!
     return pathlib.Path(self.fs.getsyspath(self.relative_fs_path))
 
+  def as_posix(self):
+    return self.as_pathlib_path().as_posix()
+
   def as_str(self):
     return str(self.as_pathlib_path())
 
