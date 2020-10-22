@@ -96,6 +96,18 @@ def test_expanduser():
   p = FsPath(root, "~/helloworld")
   assert p.expanduser() == p
 
+def test_user_group():
+  root = fs.osfs.OSFS("/tmp")
+  p = FsPath(root, "helloworld")
+  p.touch()
+  assert p.owner() == Path("/tmp/helloworld").owner()
+  assert p.group() == Path("/tmp/helloworld").group()
+  root = fs.memoryfs.MemoryFS()
+  p = FsPath(root, "helloworld")
+  p.touch()
+  assert p.owner() == None
+  assert p.group() == None
+
 @pytest.mark.xfail(raises=NotImplementedError, strict=True)
 @pytest.mark.parametrize("make_fs_path", [root_based_fspath, dir_based_fspath])
 def test_chmod(make_fs_path):

@@ -109,6 +109,20 @@ class FsPath(pathlib.PosixPath):
         return NotImplemented
     return super().__eq__(other) and self.fs == other.fs
 
+  def owner(self):
+    info = self.fs.getinfo(self.relative_fs_path, namespaces=["access"])
+    if info.has_namespace("access"):
+      return info.user
+    else:
+      return None
+
+  def group(self):
+    info = self.fs.getinfo(self.relative_fs_path, namespaces=["access"])
+    if info.has_namespace("access"):
+      return info.group
+    else:
+      return None
+
   # various "representations"
 
   @property

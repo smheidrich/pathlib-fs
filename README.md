@@ -67,6 +67,7 @@ ticket and I'll prioritize those.
     - ``cwd``: done
     - ``exists``: done
     - ``expanduser``: done
+    - ``group``: done
     - ``home``: done
     - ``is_dir``: done
     - ``is_file``: done
@@ -75,6 +76,7 @@ ticket and I'll prioritize those.
     - ``mkdir``: done
     - ``name``: done (implicitly)
     - ``open``: done
+    - ``owner``: done
     - ``parent``: done
     - ``parents``: done
     - ``parts``: done (implicitly)
@@ -96,7 +98,6 @@ ticket and I'll prioritize those.
     - ``as_posix``: ?
     - ``as_uri``: ?
     - ``glob``: ?
-    - ``group``: ?
     - ``is_block_device``: ?
     - ``is_char_device``: ?
     - ``is_fifo``: ?
@@ -107,7 +108,6 @@ ticket and I'll prioritize those.
     - ``lchmod``: ?
     - ``lstat``: ?
     - ``match``: ?
-    - ``owner``: ?
     - ``replace``: ?
     - ``rglob``: ?
     - ``rmdir``: ?
