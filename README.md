@@ -126,6 +126,7 @@ ticket and I'll prioritize those.
 
 - Done
     - ``__new__``: done
+    - ``__eq__``: done
     - ``__repr__``: done
     - ``__str__``: done (extension: can be forbidden)
     - ``__truediv__``: done
@@ -145,7 +146,6 @@ ticket and I'll prioritize those.
 - To do
     - ``__bytes__``: ?
     - ``__enter__``: ?
-    - ``__eq__``: ?
     - ``__exit__``: ?
     - ``__format__``: ?
     - ``__fspath__``: ?
