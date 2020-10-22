@@ -84,6 +84,7 @@ ticket and I'll prioritize those.
     - ``read_text``: done (implicitly)
     - ``relative_to``: done (with caveats)
     - ``rename``: done (with caveats)
+    - ``rmdir``: done
     - ``stat``: done
     - ``stem``: done (implicitly)
     - ``suffix``: done (implicitly)
@@ -111,7 +112,6 @@ ticket and I'll prioritize those.
     - ``match``: ?
     - ``replace``: ?
     - ``rglob``: ?
-    - ``rmdir``: ?
     - ``samefile``: ?
 - To do, not clear what should happen
     - ``absolute``: ?

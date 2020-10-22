@@ -118,6 +118,21 @@ def test_stat():
   p.touch()
   assert p.stat() is None
 
+def test_rmdir():
+  root = fs.osfs.OSFS("/tmp")
+  p = FsPath(root, "434aerea42")
+  p.mkdir()
+  assert p.is_dir() and Path("/tmp/434aerea42").is_dir()
+  p.rmdir()
+  assert not p.exists()
+  root = fs.memoryfs.MemoryFS()
+  p = FsPath(root, "helloworld")
+  p.mkdir()
+  assert p.is_dir()
+  p.rmdir()
+  assert not p.exists()
+
+
 @pytest.mark.xfail(raises=NotImplementedError, strict=True)
 @pytest.mark.parametrize("make_fs_path", [root_based_fspath, dir_based_fspath])
 def test_chmod(make_fs_path):

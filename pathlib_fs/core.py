@@ -66,6 +66,9 @@ class FsPath(pathlib.PosixPath):
       #   FS (probably also only makes sense for OsFs, doesn't it?)
     self.fs.move(self.relative_fs_path, target, overwrite=False)
 
+  def rmdir(self):
+    self.fs.removedir(self.relative_fs_path)
+
   def unlink(self):
     self.fs.remove(self.relative_fs_path)
 
