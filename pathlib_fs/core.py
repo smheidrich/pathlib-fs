@@ -179,6 +179,10 @@ class FsPath(pathlib.PosixPath):
     # sense for FsPaths... but yeah no idea really
     return pathlib.PurePath(*(super().relative_to(other).parts))
 
+  def expanduser(self):
+    # do nothing, as this can't be implemented in a general fashion
+    return self
+
   # debug stuff
 
   # TODO this is actually not a good idea, because most of the object-creating

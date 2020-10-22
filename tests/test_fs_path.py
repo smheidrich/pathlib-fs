@@ -91,6 +91,10 @@ def test_read_write():
     assert f.read() == b"foo"
   assert p.read_bytes() == b"foo"
 
+def test_expanduser():
+  root = fs.osfs.OSFS("/tmp")
+  p = FsPath(root, "~/helloworld")
+  assert p.expanduser() == p
 
 @pytest.mark.xfail(raises=NotImplementedError, strict=True)
 @pytest.mark.parametrize("make_fs_path", [root_based_fspath, dir_based_fspath])

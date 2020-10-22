@@ -66,6 +66,7 @@ ticket and I'll prioritize those.
 - Done
     - ``cwd``: done
     - ``exists``: done
+    - ``expanduser``: done
     - ``home``: done
     - ``is_dir``: done
     - ``is_file``: done
@@ -94,7 +95,6 @@ ticket and I'll prioritize those.
     - ``anchor``: ?
     - ``as_posix``: ?
     - ``as_uri``: ?
-    - ``expanduser``: ?
     - ``glob``: ?
     - ``group``: ?
     - ``is_block_device``: ?
