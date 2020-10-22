@@ -1,5 +1,6 @@
 from pathlib_fs import FsPath
 
+import fs.errors
 import fs.memoryfs
 import fs.osfs
 import fs.path
@@ -141,6 +142,14 @@ def test_special_types():
   assert not (p/"tmp").is_block_device()
   # TODO sockets and fifos
 
+def test_as_uri():
+  root = fs.osfs.OSFS("/tmp")
+  p = FsPath(root, "foo")
+  assert p.as_uri() == "file:///tmp/foo"
+  root = fs.memoryfs.MemoryFS()
+  p = FsPath(root, "foo")
+  with pytest.raises(fs.errors.NoURL):
+    p.as_uri()
 
 @pytest.mark.xfail(raises=NotImplementedError, strict=True)
 @pytest.mark.parametrize("make_fs_path", [root_based_fspath, dir_based_fspath])

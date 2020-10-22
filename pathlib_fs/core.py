@@ -181,6 +181,9 @@ class FsPath(pathlib.PosixPath):
     return "{}({}, {})".format(self.__class__.__name__, self.fs,
       repr(super().__str__()))
 
+  def as_uri(self):
+    return self.fs.geturl(self.relative_fs_path)
+
   # stuff that can just wrap pathlib methods directly
   # TODO I probably have to overwrite just one internal method to make all of
   # these work without having to write them here...
