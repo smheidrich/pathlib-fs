@@ -88,6 +88,7 @@ ticket and I'll prioritize those.
     - ``is_socket``: done
     - ``is_symlink``: done
     - ``iterdir``: done
+    - ``lstat``: done
     - ``mkdir``: done
     - ``name``: done (implicitly)
     - ``open``: done
@@ -116,8 +117,6 @@ ticket and I'll prioritize those.
     - ``is_mount``: ?
     - ``is_reserved``: ?
     - ``joinpath``: ?
-    - ``lchmod``: ?
-    - ``lstat``: ?
     - ``match``: ?
     - ``replace``: ?
     - ``rglob``: ?
@@ -127,6 +126,7 @@ ticket and I'll prioritize those.
     - ``chmod``: blocked by unavailability in PyFilesystem itself...
     - ``drive``: ?
     - ``is_absolute``: ?
+    - ``lchmod``: blocked by unavailability in PyFilesystem itself...
     - ``root``: ?
     - ``resolve``: ?
     - ``symlink_to``: blocked by unavailability in PyFilesystem itself...

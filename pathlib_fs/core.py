@@ -156,6 +156,15 @@ class FsPath(pathlib.PosixPath):
     else:
       return None
 
+  def lstat(self):
+    fields = ["mode", "ino", "dev", "nlink", "uid", "gid", "size", "atime",
+      "mtime", "ctime"]
+    info = self.fs.getinfo(self.relative_fs_path, namespaces=["lstat"])
+    if info.has_namespace("lstat"):
+      return os.stat_result([info.raw["lstat"]["st_"+x] for x in fields])
+    else:
+      return None
+
   # various "representations"
 
   @property

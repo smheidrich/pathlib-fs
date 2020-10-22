@@ -119,6 +119,13 @@ def test_stat():
   p.touch()
   assert p.stat() is None
 
+def test_lstat(tmpdir):
+  root = fs.osfs.OSFS(tmpdir)
+  (Path(tmpdir)/"h").touch()
+  (Path(tmpdir)/"link_to_h").symlink_to(Path(tmpdir)/"h")
+  p = FsPath(root, "link_to_h")
+  assert p.lstat() == pytest.approx((Path(tmpdir)/"link_to_h").lstat())
+
 def test_rmdir():
   root = fs.osfs.OSFS("/tmp")
   p = FsPath(root, "434aerea42")
