@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "pathlib-fs"
+version = "0.1.0"
+description = ""
+authors = ["Shahriar Heidrich <smheidrich@weltenfunktion.de>"]
+
+[tool.poetry.dependencies]
+python = ">=3.7 <4"
+fs = "*"
+
+[tool.poetry.dev-dependencies]
+pytest = "*"
+pytest-cov = "*"
+kiwisolver = "*"
+sphinx = "*"
+sybil = "*"
+coverage = ">= 5.*"
+testinfra = "*"
+
+[build-system]
+requires = ["poetry>=1.0"]
+build-backend = "poetry.masonry.api"
