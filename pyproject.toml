@@ -5,7 +5,7 @@ description = ""
 authors = ["Shahriar Heidrich <smheidrich@weltenfunktion.de>"]
 
 [tool.poetry.dependencies]
-python = ">=3.7 <4"
+python = ">=3.6 <4"
 fs = "*"
 
 [tool.poetry.dev-dependencies]
