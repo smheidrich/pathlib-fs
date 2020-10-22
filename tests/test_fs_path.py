@@ -180,6 +180,12 @@ def test_glob_dirs(tmpdir):
   assert sorted(list(p.glob("*a"))) == [ p/"1a", p/"2a" ]
   assert sorted(list(p.glob("2*"))) == [ p/"2a", p/"2b" ]
 
+def test_match():
+  root = fs.osfs.OSFS("/")
+  p = FsPath(root, "tmp/foo")
+  assert p.match("tmp/*o")
+  assert not p.match("tmp/*a")
+
 @pytest.mark.xfail(raises=NotImplementedError, strict=True)
 @pytest.mark.parametrize("make_fs_path", [root_based_fspath, dir_based_fspath])
 def test_chmod(make_fs_path):

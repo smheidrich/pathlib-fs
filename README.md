@@ -92,6 +92,7 @@ ticket and I'll prioritize those.
     - ``joinpath``: done
     - ``lstat``: done
     - ``mkdir``: done
+    - ``match``: done (implicitly; only performed on the FS-relative path)
     - ``name``: done (implicitly)
     - ``open``: done
     - ``owner``: done
@@ -114,14 +115,13 @@ ticket and I'll prioritize those.
     - ``write_bytes``: done (implicitly)
     - ``write_text``: done (implicitly)
 - To do
-    - ``anchor``: ?
     - ``is_mount``: ?
     - ``is_reserved``: ?
-    - ``match``: ?
     - ``replace``: ?
     - ``rglob``: ?
     - ``samefile``: ?
 - To do, not clear what should happen
+    - ``anchor``: ? (same issue as ``drive``)
     - ``absolute``: ?
     - ``chmod``: blocked by unavailability in PyFilesystem itself...
     - ``drive``: ?
