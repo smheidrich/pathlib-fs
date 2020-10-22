@@ -35,10 +35,18 @@ FsPath(fs, *path_segments)
 ```
 
 - ``fs``: PyFilesystem FS object
-- ``*path_segments``: same meaning as ``pathlib.Path``
+- ``*path_segments``: same meaning as in ``pathlib.Path``
 
 Note that ``path_segments`` *must* be relative, as paths in PyFilesystem are
 always relative to the FS object.
+
+Additional properties and methods implemented on ``FsPath`` are:
+
+- `relative_fs_path` - the path relative to its FS object (i.e. the one
+  specified by `*path_segments` in the constructor)
+- `as_pathlib_path()` - returns the path's ``pathlib.Path`` equivalent if
+  possible (i.e. only works for OSFS and analogous FS types)
+
 
 ### Extensions
 
