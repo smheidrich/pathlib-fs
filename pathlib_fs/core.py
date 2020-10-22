@@ -203,6 +203,10 @@ class FsPath(pathlib.PosixPath):
   # TODO I probably have to overwrite just one internal method to make all of
   # these work without having to write them here...
 
+  def joinpath(self, *other):
+    p = super().joinpath(*other)
+    return self.__class__(self.fs, *(p.parts), disallow_str=self.disallow_str)
+
   def __truediv__(self, x):
     p = super().__truediv__(x)
     return self.__class__(self.fs, *(p.parts), disallow_str=self.disallow_str)

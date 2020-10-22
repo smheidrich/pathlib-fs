@@ -62,6 +62,7 @@ def test_pathlib_derived_functionality():
   assert (p/"relative/test").relative_to(p) == PurePath("relative/test")
   with pytest.raises(ValueError):
     (p/"relative/test").relative_to(FsPath(fs.memoryfs.MemoryFS(), "tmp"))
+  assert p3.joinpath("hi","he") == p2/"hello/universe/hi/he"
 
 def test_basic_pathlib_emulation():
   """

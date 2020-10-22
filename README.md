@@ -88,6 +88,7 @@ ticket and I'll prioritize those.
     - ``is_socket``: done
     - ``is_symlink``: done
     - ``iterdir``: done
+    - ``joinpath``: done
     - ``lstat``: done
     - ``mkdir``: done
     - ``name``: done (implicitly)
@@ -116,7 +117,6 @@ ticket and I'll prioritize those.
     - ``as_posix``: ?
     - ``is_mount``: ?
     - ``is_reserved``: ?
-    - ``joinpath``: ?
     - ``match``: ?
     - ``replace``: ?
     - ``rglob``: ?
