@@ -1,6 +1,7 @@
 import fs.osfs
 import fs.permissions
 import pathlib
+import os
 
 
 class FsPath(pathlib.PosixPath):
@@ -120,6 +121,15 @@ class FsPath(pathlib.PosixPath):
     info = self.fs.getinfo(self.relative_fs_path, namespaces=["access"])
     if info.has_namespace("access"):
       return info.group
+    else:
+      return None
+
+  def stat(self):
+    fields = ["mode", "ino", "dev", "nlink", "uid", "gid", "size", "atime",
+      "mtime", "ctime"]
+    info = self.fs.getinfo(self.relative_fs_path, namespaces=["stat"])
+    if info.has_namespace("stat"):
+      return os.stat_result([info.raw["stat"]["st_"+x] for x in fields])
     else:
       return None
 

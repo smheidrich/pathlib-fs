@@ -84,6 +84,7 @@ ticket and I'll prioritize those.
     - ``read_text``: done (implicitly)
     - ``relative_to``: done (with caveats)
     - ``rename``: done (with caveats)
+    - ``stat``: done
     - ``stem``: done (implicitly)
     - ``suffix``: done (implicitly)
     - ``suffixes``: done (implicitly)
@@ -112,7 +113,6 @@ ticket and I'll prioritize those.
     - ``rglob``: ?
     - ``rmdir``: ?
     - ``samefile``: ?
-    - ``stat``: ?
 - To do, not clear what should happen
     - ``absolute``: ?
     - ``chmod``: blocked by unavailability in PyFilesystem itself...

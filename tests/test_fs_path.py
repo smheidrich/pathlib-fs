@@ -108,6 +108,16 @@ def test_user_group():
   assert p.owner() == None
   assert p.group() == None
 
+def test_stat():
+  root = fs.osfs.OSFS("/tmp")
+  p = FsPath(root, "helloworld")
+  p.touch()
+  assert p.stat() == pytest.approx(Path("/tmp/helloworld").stat())
+  root = fs.memoryfs.MemoryFS()
+  p = FsPath(root, "helloworld")
+  p.touch()
+  assert p.stat() is None
+
 @pytest.mark.xfail(raises=NotImplementedError, strict=True)
 @pytest.mark.parametrize("make_fs_path", [root_based_fspath, dir_based_fspath])
 def test_chmod(make_fs_path):
