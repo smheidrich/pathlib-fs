@@ -79,6 +79,19 @@ def test_basic_pathlib_emulation():
   # print(list(p.parents))
   assert list(p.parents) == [ FsPath(root, "hello"), FsPath(root, "") ]
 
+def test_read_write():
+  root = fs.osfs.OSFS("/tmp")
+  p = FsPath(root, "helloworld")
+  p.write_text("foo")
+  with open("/tmp/helloworld") as f:
+    assert f.read() == "foo"
+  assert p.read_text() == "foo"
+  p.write_bytes(b"foo")
+  with open("/tmp/helloworld", "rb") as f:
+    assert f.read() == b"foo"
+  assert p.read_bytes() == b"foo"
+
+
 @pytest.mark.xfail(raises=NotImplementedError, strict=True)
 @pytest.mark.parametrize("make_fs_path", [root_based_fspath, dir_based_fspath])
 def test_chmod(make_fs_path):

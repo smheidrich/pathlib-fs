@@ -77,6 +77,8 @@ ticket and I'll prioritize those.
     - ``parent``: done
     - ``parents``: done
     - ``parts``: done (implicitly)
+    - ``read_bytes``: done (implicitly)
+    - ``read_text``: done (implicitly)
     - ``relative_to``: done (with caveats)
     - ``rename``: done (with caveats)
     - ``stem``: done (implicitly)
@@ -86,6 +88,8 @@ ticket and I'll prioritize those.
     - ``unlink``: done
     - ``with_name``: done
     - ``with_suffix``: done
+    - ``write_bytes``: done (implicitly)
+    - ``write_text``: done (implicitly)
 - To do
     - ``anchor``: ?
     - ``as_posix``: ?
@@ -104,15 +108,11 @@ ticket and I'll prioritize those.
     - ``lstat``: ?
     - ``match``: ?
     - ``owner``: ?
-    - ``read_bytes``: ?
-    - ``read_text``: ?
     - ``replace``: ?
     - ``rglob``: ?
     - ``rmdir``: ?
     - ``samefile``: ?
     - ``stat``: ?
-    - ``write_bytes``: ?
-    - ``write_text``: ?
 - To do, not clear what should happen
     - ``absolute``: ?
     - ``chmod``: blocked by unavailability in PyFilesystem itself...
