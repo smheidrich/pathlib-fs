@@ -69,8 +69,12 @@ ticket and I'll prioritize those.
     - ``expanduser``: done
     - ``group``: done
     - ``home``: done
+    - ``is_block_device``: done
+    - ``is_char_device``: done
     - ``is_dir``: done
+    - ``is_fifo``: done
     - ``is_file``: done
+    - ``is_socket``: done
     - ``is_symlink``: done
     - ``iterdir``: done
     - ``mkdir``: done
@@ -100,12 +104,8 @@ ticket and I'll prioritize those.
     - ``as_posix``: ?
     - ``as_uri``: ?
     - ``glob``: ?
-    - ``is_block_device``: ?
-    - ``is_char_device``: ?
-    - ``is_fifo``: ?
     - ``is_mount``: ?
     - ``is_reserved``: ?
-    - ``is_socket``: ?
     - ``joinpath``: ?
     - ``lchmod``: ?
     - ``lstat``: ?

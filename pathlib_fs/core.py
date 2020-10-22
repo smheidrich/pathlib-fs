@@ -1,3 +1,4 @@
+from fs.enums import ResourceType
 import fs.osfs
 import fs.permissions
 import pathlib
@@ -93,11 +94,24 @@ class FsPath(pathlib.PosixPath):
   def exists(self):
     return self.fs.exists(self.relative_fs_path)
 
+  def is_block_device(self):
+    return self.fs.gettype(self.relative_fs_path) == \
+      ResourceType.block_special_file
+
+  def is_char_device(self):
+    return self.fs.gettype(self.relative_fs_path) == ResourceType.character
+
   def is_dir(self):
     return self.fs.isdir(self.relative_fs_path)
 
   def is_file(self):
     return self.fs.isfile(self.relative_fs_path)
+
+  def is_fifo(self):
+    return self.fs.gettype(self.relative_fs_path) == ResourceType.fifo
+
+  def is_socket(self):
+    return self.fs.gettype(self.relative_fs_path) == ResourceType.socket
 
   def is_symlink(self):
     # TODO report this to PyFilesystem... islink should just return False if

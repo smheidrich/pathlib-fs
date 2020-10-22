@@ -132,6 +132,15 @@ def test_rmdir():
   p.rmdir()
   assert not p.exists()
 
+def test_special_types():
+  root = fs.osfs.OSFS("/")
+  p = FsPath(root, "")
+  assert (p/"dev/tty").is_char_device()
+  assert not (p/"tmp").is_char_device()
+  assert (p/"dev/sda").is_block_device()
+  assert not (p/"tmp").is_block_device()
+  # TODO sockets and fifos
+
 
 @pytest.mark.xfail(raises=NotImplementedError, strict=True)
 @pytest.mark.parametrize("make_fs_path", [root_based_fspath, dir_based_fspath])
