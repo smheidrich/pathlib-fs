@@ -1,5 +1,6 @@
 from fs.enums import ResourceType
 import fs.osfs
+import fs.path
 import fs.permissions
 import pathlib
 import os
@@ -121,6 +122,11 @@ class FsPath(pathlib.PosixPath):
 
   def iterdir(self):
     return self.fs.listdir(self.relative_fs_path)
+
+  def glob(self, pattern):
+    for match in self.fs.glob(fs.path.join(self.relative_fs_path, pattern)):
+      yield self.__class__(self.fs, fs.path.relpath(match.path),
+        disallow_str=self.disallow_str)
 
   def __eq__(self, other):
     if not isinstance(other, FsPath):

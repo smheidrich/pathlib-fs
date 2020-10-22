@@ -76,6 +76,8 @@ ticket and I'll prioritize those.
     - ``cwd``: done
     - ``exists``: done
     - ``expanduser``: done
+    - ``glob``: done, but yields only files
+      (https://github.com/PyFilesystem/pyfilesystem2/issues/389)
     - ``group``: done
     - ``home``: done
     - ``is_block_device``: done
@@ -111,7 +113,6 @@ ticket and I'll prioritize those.
 - To do
     - ``anchor``: ?
     - ``as_posix``: ?
-    - ``glob``: ?
     - ``is_mount``: ?
     - ``is_reserved``: ?
     - ``joinpath``: ?

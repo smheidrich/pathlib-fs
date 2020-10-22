@@ -151,6 +151,26 @@ def test_as_uri():
   with pytest.raises(fs.errors.NoURL):
     p.as_uri()
 
+def test_glob_files(tmpdir):
+  root = fs.osfs.OSFS(tmpdir)
+  p = FsPath(root, "toplevel")
+  p.mkdir()
+  for x in [ "1a", "2a", "1b", "2b" ]:
+    (p/x).touch()
+  assert sorted(list(p.glob("*a"))) == [ p/"1a", p/"2a" ]
+  assert sorted(list(p.glob("2*"))) == [ p/"2a", p/"2b" ]
+
+@pytest.mark.xfail(reason="PyFilesystem's glob is files-only, cf. "
+  "https://github.com/PyFilesystem/pyfilesystem2/issues/389", strict=True)
+def test_glob_dirs(tmpdir):
+  root = fs.osfs.OSFS(tmpdir)
+  p = FsPath(root, "toplevel")
+  p.mkdir()
+  for x in [ "1a", "2a", "1b", "2b" ]:
+    (p/x).mkdir()
+  assert sorted(list(p.glob("*a"))) == [ p/"1a", p/"2a" ]
+  assert sorted(list(p.glob("2*"))) == [ p/"2a", p/"2b" ]
+
 @pytest.mark.xfail(raises=NotImplementedError, strict=True)
 @pytest.mark.parametrize("make_fs_path", [root_based_fspath, dir_based_fspath])
 def test_chmod(make_fs_path):
