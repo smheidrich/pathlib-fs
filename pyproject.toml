@@ -11,7 +11,6 @@ fs = "*"
 [tool.poetry.dev-dependencies]
 pytest = "*"
 pytest-cov = "*"
-kiwisolver = "*"
 sphinx = "*"
 sybil = "*"
 coverage = ">= 5.*"
