@@ -1,3 +1,7 @@
+> **NOTE:** Having found out about the very similarly named
+> [pathlibfs](https://pypi.org/project/pathlibfs/) which offers much of the
+> same functionality but for a different backend, I might scrap this.
+
 [![travis](https://travis-ci.org/smheidrich/pathlib-fs.svg?branch=master)](https://travis-ci.org/smheidrich/pathlib-fs)
 [![codecov](https://codecov.io/gh/smheidrich/pathlib-fs/branch/master/graph/badge.svg)](https://codecov.io/gh/smheidrich/pathlib-fs)
 
@@ -27,9 +31,8 @@ That's what this project aims to implement.
 
 ## Installation
 
-```bash
-pip install pathlib-fs
-```
+Currently, you can only install it from git. I'll have to rename it if I want
+to release it on PyPI (see "Related projects") below.
 
 ## API
 
@@ -201,6 +204,14 @@ I don't think I should implement any of those... but for completeness's sake:
 
 ## Related projects
 
+- [pathlibfs](https://pypi.org/project/pathlibfs/): the exact same idea as
+  this, except instead of PyFilesystem FSs, it uses
+  [fsspec](https://filesystem-spec.readthedocs.io/en/latest/) filesystems as
+  its backends. The name is so similar that I'll have to rename this if I ever
+  want to release it to PyPI (as it won't allow two very similarly named
+  projects to coexist). See
+  [here](https://filesystem-spec.readthedocs.io/en/latest/intro.html#other-similar-work)
+  for a comparison between fsspec and PyFilesystem.
 - [plumbum](https://plumbum.readthedocs.io/): has ``LocalPath`` and
   ``RemotePath`` classes, which are almost (but not quite yet) compatible with
   ``pathlib.Path``. If you just need a local/remote abstraction, these can be
