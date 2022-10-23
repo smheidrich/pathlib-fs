@@ -25,6 +25,12 @@ convert the path to a string before opening, etc.).
 
 That's what this project aims to implement.
 
+## Installation
+
+```bash
+pip install pathlib-fs
+```
+
 ## API
 
 To start with, the API will be as close as possible to ``pathlib.Path``'s, the
