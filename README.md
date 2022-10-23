@@ -57,11 +57,9 @@ Whether these will be added in the form of subclass methods etc. is still TBD.
 
 ## Implementation status
 
-Just started, hence totally WIP.
+Work-in-progress & not suitable for production use yet.
 
 ### Individual methods and properties
-
-There is a lot to do...
 
 I'm just going through ``pathlib.Path``'s methods and re-implementing them in
 the wrapper one by one (cf. list below).
