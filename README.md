@@ -2,6 +2,12 @@
 > [pathlibfs](https://pypi.org/project/pathlibfs/) which offers much of the
 > same functionality but for a different backend, I might scrap this.
 
+> **NOTE 2:** Also note that there is
+> [work underway](https://discuss.python.org/t/make-pathlib-extensible/3428)
+> to define an ABC for Python's own pathlib, which I'm sure will, if merged,
+> immediately cause packages with brand new implementations of that interface
+> for various filesystems to crop up, reducing the usefulness of PyFilesystem.
+
 [![travis](https://travis-ci.org/smheidrich/pathlib-fs.svg?branch=master)](https://travis-ci.org/smheidrich/pathlib-fs)
 [![codecov](https://codecov.io/gh/smheidrich/pathlib-fs/branch/master/graph/badge.svg)](https://codecov.io/gh/smheidrich/pathlib-fs)
 
